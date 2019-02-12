@@ -1,0 +1,71 @@
+﻿@using OnlineStore.Models
+@model List<Product>
+@{
+    ViewBag.Title = "GetProduct";
+}
+<script src="~/Areas/ContentArea/js/jquery-1.8.3.min.js"></script>
+<section class="panel">
+    <header class="panel-heading">
+        Ürünler
+    </header>
+    <div class="panel-body">
+        <div class="adv-table editable-table ">
+            <br />
+            <div class="clearfix">
+                <div class="btn-group">
+                    <a href="~/ManagerPanel/ProductManager/AddToProduct" class="btn btn-success">
+                        Ürün Ekle <i class="icon-plus"></i>
+                    </a>
+                </div>
+                <div class="btn-group pull-right">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        Tools <i class="icon-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#">Print</a></li>
+                        <li><a href="#">Save as PDF</a></li>
+                        <li><a href="#">Export to Excel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="space15"></div><br />
+            <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                <thead>
+                    <tr>
+                        <th>Ürün Kod</th>
+                        <th>Kategori</th>
+                        <th>Ürün Kodu</th>
+                        <th>Ürün</th>
+                        <th>Alış </th>
+                        <th>Satış</th>
+                        <th>Stok </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="">
+                                <td>@item.ProductCode</td>
+                                <td>@item.Category.Title</td>
+                                <td>@item.ProductCode</td>
+                                <td>@item.Name</td>
+                                <td>@item.Price.BuyingPrice </td>
+                                <td>@item.Price.SalingPrice </td>
+                                <td>@item.Stock</td>
+                                <td>
+                                    <a href="/ManagerPanel/ProductManager/EditToProduct/@item.Id" class='btn btn-warning'><i class="icon-pencil"></i></a>
+                                    <a href="/ManagerPanel/ProductManager/Delete/@item.Id" class='btn btn-danger'><i class="icon-trash"></i></a>
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

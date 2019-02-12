@@ -1,0 +1,28 @@
+﻿@using OnlineStore.Models
+@model List<Product>
+
+
+<div>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div class="panel-body cart-all">
+                <ul class="grid cs-style-3">
+                    <li>
+                        <figure>
+                            <img src="@item.ImageName" alt="img04">
+                            <figcaption>
+                                <h3>@item.Name</h3>
+                                <span>@item.Price.SalingPrice </span>
+                                <a class="fancybox" rel="group" href="@item.ImageName">Görüntüle</a>
+                                <a href="#" class="fancybox" rel="group">İncele</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                </ul>
+            </div>
+        }
+    }
+</div>

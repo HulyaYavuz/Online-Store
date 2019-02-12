@@ -1,0 +1,238 @@
+﻿@model OnlineStore.Models.Product
+
+@{
+    ViewBag.Title = "EditToProduct";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>Advanced Form Components</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Areas/ContentArea/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Areas/ContentArea/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/Areas/ContentArea/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/assets/bootstrap-fileupload/bootstrap-fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/assets/bootstrap-timepicker/compiled/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/assets/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/assets/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/assets/bootstrap-datetimepicker/css/datetimepicker.css" />
+    <script src="~/Areas/ContentArea/js/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        // Kategori seçildiğinde bu fonksiyonumuz çalışmaya başlayacaktır.
+        $('#MainCategory').change(function () {
+            // Seçilen Kategorinin ID sini alıyoruz.
+            var categoryId = $(this).val();
+            if (categoryId != null && categoryId != '') {
+                $.ajax({
+                    type: "post",
+                    url: '@Url.Action("GetSubCategory", "ProductManager")',
+                    data: { categoryId: categoryId },
+                    success: function (result) {
+                        $.each(result, function (index, kategori) {
+                            $('#SubCategory').append($('<option/>', {
+                                value: kategori.Text,
+                                text: kategori.Text
+                            }));
+                        });
+                    },
+                    error: function () {
+                        /*Bu metod ile Ajax işlemi başarısız
+                        olursa eğer hata mesajı verebiliyoruz.*/
+                        alert("Hata");
+                    },
+                    beforeSend: function () {
+                        /*Burada ise Form Post edilmeden önce
+                        işlemler yapılabilir.Örnek olarak Loading, yükleniyor vs..*/
+                    },
+                    complete: function () {
+                        /*Burada ise Form Post edildikten sonra
+                        işlemler yapılabilir.Örnek olarak yükleme tamamlandı vs..*/
+                    }
+                });
+            }
+        });
+    });
+    </script>
+
+
+    @using (Html.BeginForm("EditToProduct", "ProductManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <section class="wrapper">
+            <!-- page start-->
+            @Html.HiddenFor(model => model.Id)
+            <!--multiple select start-->
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Ürün Kategori İşlemi
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="icon-chevron-down"></a>
+                            </span>
+                        </header>
+                        <div class="panel-body">
+
+                            <form action="#" class="form-horizontal tasi-form">
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.Category.Id)
+                                    @Html.Label("Ana Kategori", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
+
+                                        @Html.DropDownListFor(model => model.Category.Root, (SelectList)ViewBag.Product,new { @id = "MainCategory", @class = "form-control " })
+
+                                       
+                                    </div>
+                                </div>
+                                <br /><br />
+                                <div class="form-group">
+                                    @Html.Label("Kategori", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
+                                        @Html.DropDownListFor(model => model.Category.Title, Enumerable.Empty<SelectListItem>(),Model.Category.Title, new { @id = "SubCategory", @class = "form-control " })
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!--multiple select end-->
+            <!--Resim Ekleme Start-->
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Ürün Resim Ekleme İşlemi
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="icon-chevron-down"></a>
+                            </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal tasi-form">
+                                <div class="form-group last">
+                                    <label class="control-label col-md-3">Resim Yükle</label>
+                                    <div class="col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                <img src="~/@Model.ImageName" alt="" />
+                                            </div>
+                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                            <div>
+                                                <span class="btn btn-white btn-file">
+                                                    <span class="fileupload-new"><i class="icon-paper-clip"></i> Resim Seç</span>
+                                                    <span class="fileupload-exists"><i class="icon-undo"></i> Değiştir</span>
+                                                    <input type="file" class="default" name="NoteImageNameInput1" />
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Renk</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="colorpicker-default form-control" value="#8fff00" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Ürün Kod</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Ürün Ad </label>
+                                    <div class="col-md-9">
+                                        @Html.TextAreaFor(model => model.Name, new { @class = "wysihtml5 form-control", @rows = "2" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Stok </label>
+                                    <div class="col-md-9">
+                                        <div id="spinner3">
+                                            <div class="input-group" style="width:150px;">
+                                                @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "spinner-input form-control", @maxlength = "3" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Alış Fiyatı</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.Price.BuyingPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Satış Fiyatı</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.Price.SalingPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">KDV</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.Price.KDV, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!--Resim Ekleme end-->
+            
+            <!-- page end-->
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Kaydet" class="btn btn-default" />
+                </div>
+            </div>
+        </section>
+    }
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="~/Areas/ContentArea/js/jquery.js"></script>
+    <script src="~/Areas/ContentArea/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="~/Areas/ContentArea/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Areas/ContentArea/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Areas/ContentArea/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="~/Areas/ContentArea/js/respond.min.js"></script>
+
+    <!--this page plugins-->
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/fuelux/js/spinner.min.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="~/Areas/ContentArea/assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
+
+    <!--this page  script only-->
+    <script src="~/Areas/ContentArea/js/advanced-form-components.js"></script>
+
+</body>
+
+</html>

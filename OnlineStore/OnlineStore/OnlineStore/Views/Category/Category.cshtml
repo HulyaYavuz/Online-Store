@@ -1,0 +1,43 @@
+﻿
+
+@using OnlineStore.Models
+@model  CommenModel
+
+
+
+@if (Model.Categories != null)
+{
+    <div class="catagories-side-menu">
+        <!-- Close Icon -->
+        <div id="sideMenuClose">
+            <i class="ti-close"></i>
+        </div>
+        <!--  Side Nav  -->
+        <div class="nav-side-menu">
+            <div class="menu-list">
+                <h6>Categories</h6>
+                <ul id="menu-content" class="menu-content collapse out">
+
+
+                    @foreach (var item in Model.Categories.Where(c => c.Root == 0))
+                    {
+                        <!-- Single Item -->
+                        <li data-toggle="collapse" data-target="#@item.Title" class="collapsed active">
+                            <a href="#">@item.Title <span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="@item.Title">
+                                @foreach (var root in Model.Categories.Where(x => x.Root == item.Id))
+                                {
+                                    <li><a href="/Category/ByCategory/@root.Id">@root.Title</a></li>
+                                }
+
+                            </ul>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+}

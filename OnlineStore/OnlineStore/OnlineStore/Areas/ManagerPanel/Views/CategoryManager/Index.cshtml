@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6" style="margin-top:120px;">
+        @using (Html.BeginForm())
+        {
+            <section class="panel">
+                <header class="panel-heading">
+                    Filtreleme Seçiniz...
+                </header>
+                <div class="panel-body">
+                   
+                    <a href="~/ManagerPanel/CategoryManager/BrandFilter" class="btn btn-success  btn-block">Marka</a>
+                    <a href="~/ManagerPanel/CategoryManager/ProductCodeFilter" class="btn btn-default btn-block"> Ürün Kodu</a>
+                    <a href="~/ManagerPanel/CategoryManager/CategoryFilter" class="btn btn-info  btn-block"> Kategori</a>
+                </div>
+            </section>
+        }
+    </div>
+</div>
+
+

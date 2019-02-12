@@ -1,0 +1,56 @@
+﻿@using OnlineStore.Models
+@model User
+@{
+    ViewBag.Title = "Giriş";
+}
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-4 ">
+
+        @using (Html.BeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h2>Giriş</h2>
+
+                    <small style="color:red;">@TempData["Info"]</small><br />
+
+                    @if (string.IsNullOrEmpty((string)ViewBag.ReError) == false)
+                    {
+                        <small style="color:red;">@ViewBag.ReError</small>
+                    }
+                    else
+                    {
+                        <small>Lütfen e-posta ve şifrenizi giriniz.</small>
+                    }
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "e-mail adres", type = "email" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "şifre", type = "password" })
+
+                    </div>
+
+
+                </div>
+                <div class="panel-footer text-right">
+                    <a href="ForgotPassword" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-asterisk"></span> Şifremi Unuttum
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    </button>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

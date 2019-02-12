@@ -1,0 +1,103 @@
+﻿@using OnlineStore.Models
+@model List<Product>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Areas/ContentArea/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Areas/ContentArea/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/Areas/ContentArea/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Areas/ContentArea/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/ContentArea/css/gallery.css" />
+    <!-- Custom styles for this template -->
+    <link href="~/Areas/ContentArea/css/style.css" rel="stylesheet">
+    <link href="~/Areas/ContentArea/css/style-responsive.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <section class="wrapper">
+            <section class="panel">
+                <header class="panel-heading" style="padding-left:220px; width:550px;">
+                    Filtrelemek İstediğiniz Kategoriyi Giriniz..
+                </header>
+
+                <div class="panel-body" style="padding-left:220px; width:550px;">
+                    <div class="form-horizontal" role="form">
+                        <div class="form-group">
+
+                            <div class="col-lg-10">
+                                @Html.Editor("category", new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button type="submit" class="btn btn-info ">Filtrele</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- page start-->
+            <section class="panel">
+               
+                <div class="panel-body">
+                    <ul class="grid cs-style-3">
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <li>
+                                    <figure>
+                                        <img src="~/img/product-img/@item.ImageName" alt="img04" style="height:198px!important; width:243px!important;">
+                                        <figcaption style="height:198px!important; width:243px!important;">
+                                            <h3>@item.Name</h3>
+                                            <h5>Fİyat: @item.Price.SalingPrice tl </h5>
+                                            <h5>Kod: @item.ProductCode</h5>
+                                            <h5>Stok:@item.Stock</h5>
+                                            <h5>Kategori: @item.Category.Title</h5><br />
+                                            <a href="~/ManagerPanel/ProductManager/EditToProduct/@item.Id">Düzenle</a>
+
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </section>
+            <!-- page end-->
+        </section>
+    }
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="~/Areas/ContentArea/js/jquery.js"></script>
+    <script src="~/Areas/ContentArea/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="~/Areas/ContentArea/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Areas/ContentArea/assets/fancybox/source/jquery.fancybox.js"></script>
+    <script src="~/Areas/ContentArea/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Areas/ContentArea/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="~/Areas/ContentArea/js/respond.min.js"></script>
+    <script src="~/Areas/ContentArea/js/modernizr.custom.js"></script>
+    <script src="~/Areas/ContentArea/js/toucheffects.js"></script>
+
+    <!--common script for all pages-->
+    @*<script src="~/Areas/ContentArea/js/common-scripts.js"></script>*@
+    <script type="text/javascript">
+            $(function () {
+                //    fancybox
+                jQuery(".fancybox").fancybox();
+            });
+
+    </script>
+
+</body>
+</html>

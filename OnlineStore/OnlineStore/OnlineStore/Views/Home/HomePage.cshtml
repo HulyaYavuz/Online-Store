@@ -1,0 +1,288 @@
+﻿@using OnlineStore.Models
+@model  CommenModel
+
+
+
+
+<!-- ****** Slider Kampanyalar****** -->
+<section class="top-discount-area d-md-flex align-items-center">
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>Ücretsiz Kargo &amp; İade</h5>
+        <h6><a href="#">Satın Al</a></h6>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>20% Tüm Elbiselerde geçerli</h5>
+        <h6>KOD: elbisem</h6>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>20% Anneler Gününe Özel</h5>
+        <h6>KOD: annem</h6>
+    </div>
+</section>
+<!-- ****** Slider End ****** -->
+<!-- ****** Welcome Slides Area Start ****** -->
+<section class="welcome_area">
+    <div class="welcome_slides owl-carousel">
+        <!-- Single Slide Start -->
+        <div class="single_slide height-800 bg-img background-overlay" style=" background-image: url('../../img/bg-img/bg-1.jpg');">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="welcome_slide_text">
+                            <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
+                            <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Moda Trendleri</h2>
+                            <a href="#" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">İNCELE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Slide Start -->
+        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url('../../img/bg-img/bg-4.jpg');">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="welcome_slide_text">
+                            <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
+                            <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Yaz Koleksiyonu</h2>
+                            <a href="#" class="btn karl-btn" data-animation="fadeInLeftBig" data-delay="1s" data-duration="500ms">İNCELE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Slide Start -->
+        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url('../../img/bg-img/bg-2.jpg');">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="welcome_slide_text">
+                            <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
+                            <h2 data-animation="bounceInDown" data-delay="500ms" data-duration="500ms">Kadın Modası</h2>
+                            <a href="#" class="btn karl-btn" data-animation="fadeInRightBig" data-delay="1s" data-duration="500ms">İNCELE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ****** Welcome Slides Area End ****** -->
+
+
+<!-- ****** Quick View Modal Area Start ****** -->
+<div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="quickview_body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ****** Quick View Modal Area End ****** -->
+<!-- ****** New Arrivals Area Start ****** -->
+<section class="new_arrivals_area section_padding_100_0 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_heading text-center">
+                    <h2>Yeni Gelenler</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="karl-projects-menu mb-100">
+        <div class="text-center portfolio-menu">
+            <button class="btn active" data-filter="*">Tümü</button>
+            <button class="btn" data-filter=".1">Kadın</button>
+            <button class="btn" data-filter=".2">Erkek</button>
+            <button class="btn" data-filter=".access">Aksesuar</button>
+            <button class="btn" data-filter=".shoes">Ayakkabı</button>
+            <button class="btn" data-filter=".kids">Çocuk</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row karl-new-arrivals">
+            @if (Model.Products != null)
+            {
+
+                foreach (var item in Model.Products)
+                {
+                    <!-- Single gallery Item Start -->
+                    <div class="col-12 col-sm-6 col-md-4 single_gallery_item @item.Category.Root wow fadeInUpBig" data-wow-delay="0.2s">
+                        <!-- Product Image -->
+                        <div class="product-img">
+                            <img src="~/img/product-img/@item.ImageName" alt="">
+                            <div class="product-quicview">
+                                <a onclick="GetProductInfo(@item.Id)"><i class="ti-plus"></i></a>
+                            </div>
+                        </div>
+                        <!-- Product Description -->
+                        <div class="product-description">
+                            <h4 class="product-price">@item.Price.SalingPrice ₺</h4>
+                            <p>@item.Name</p>
+                            <!-- Add to Cart -->
+                            <a href="" class="add-to-cart-btn addtobasket" data-id="@item.Id">Sepete Ekle</a>
+                        </div>
+                    </div>
+                }
+            }
+
+
+
+        </div>
+    </div>
+</section>
+<!-- ****** New Arrivals Area End ****** -->
+<!-- ****** Offer Area Start ****** -->
+<section class="offer_area height-700 section_padding_100 bg-img" style="background-image: url('../../img/bg-img/bg-5.jpg');">
+    <div class="container h-100">
+        <div class="row h-100 align-items-end justify-content-end">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="offer-content-area wow fadeInUp" data-wow-delay="1s">
+                    <h2>White t-shirt <span class="karl-level">Hot</span></h2>
+                    <p>* Free shipping until 25 Dec 2017</p>
+                    <div class="offer-product-price">
+                        <h3><span class="regular-price">$25.90</span> $15.90</h3>
+                    </div>
+                    <a href="#" class="btn karl-btn mt-30">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ****** Offer Area End ****** -->
+<!-- ****** Popular Brands Area Start ****** -->
+<section class="karl-testimonials-area section_padding_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_heading text-center">
+                    <h2>Memnuniyetlerimiz</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="karl-testimonials-slides owl-carousel">
+
+                    <!-- Single Testimonial Area -->
+                    <div class="single-testimonial-area text-center">
+                        <span class="quote">"</span>
+                        <h6>Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. </h6>
+                        <div class="testimonial-info d-flex align-items-center justify-content-center">
+                            <div class="tes-thumbnail">
+                                <img src="~/img/bg-img/tes-1.jpg" alt="">
+                            </div>
+                            <div class="testi-data">
+                                <p>Michelle Williams</p>
+                                <span>Client, Los Angeles</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Testimonial Area -->
+                    <div class="single-testimonial-area text-center">
+                        <span class="quote">"</span>
+                        <h6>Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. </h6>
+                        <div class="testimonial-info d-flex align-items-center justify-content-center">
+                            <div class="tes-thumbnail">
+                                <img src="~/img/bg-img/tes-1.jpg" alt="">
+                            </div>
+                            <div class="testi-data">
+                                <p>Michelle Williams</p>
+                                <span>Client, Los Angeles</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Testimonial Area -->
+                    <div class="single-testimonial-area text-center">
+                        <span class="quote">"</span>
+                        <h6>Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. </h6>
+                        <div class="testimonial-info d-flex align-items-center justify-content-center">
+                            <div class="tes-thumbnail">
+                                <img src="~/img/bg-img/tes-1.jpg" alt="">
+                            </div>
+                            <div class="testi-data">
+                                <p>Michelle Williams</p>
+                                <span>Client, Los Angeles</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- ****** Popular Brands Area End ****** -->
+
+<script>
+    $(document).ready(function myfunction() {
+        $(".addtobasket").click(function myfunction() {
+            var uid = $(this).attr("data-id");
+            $.ajax({
+                type: "GET",
+                url: "/Cart/AddBasket",
+                data: { id: uid },
+                async: false,
+                success: function myfunction() {
+                    $.ajax({
+                        type: "GET",
+                        url: "/Cart/MiniBasket",
+                        async: false,
+                        success: function VeriGetir(veri) {
+                            console.log("test");
+                            $(".cart-all").html('');
+                            $(".cart-all").html(veri);
+                            window.location.reload();
+
+                        }
+
+                    })
+                },
+                error: function myfunction() {
+                    alert("Hata : Ürün Sepete Eklenemedi.");
+                }
+            });
+        });
+    });
+
+
+
+    function GetProductInfo(Id) {
+
+        $.ajax({
+            url: "/Home/ShowProduct/" + Id,
+            method: "GET",
+            async: true,
+            success: function (data) {
+                console.log(data);
+                // $('.quickview_body').text(data);
+                $("#quickview .modal-body").html(data);
+                $("#quickview").modal("show");
+            },
+            error: function (err) {
+                console.log("hata", err);
+            }
+        });
+    }
+
+
+</script>

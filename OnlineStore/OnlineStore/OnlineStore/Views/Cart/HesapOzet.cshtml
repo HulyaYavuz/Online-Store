@@ -1,0 +1,22 @@
+﻿@using OnlineStore.Models
+@model List<Cart>
+
+
+@if (Model != null)
+{
+<ul class="order-details-form mb-4">
+    <li><span>Product</span> <span>Toplam</span></li>
+    @foreach (Cart item in Model)
+    {
+
+
+
+        <li><span>@item.Product.Name</span> <span>$@(item.Count * item.Product.Price.BuyingPrice)</span></li>
+
+
+    }
+    <li><span>Tutar</span> <span>$59.90</span></li>
+    <li><span>Kargo</span> <span>Free</span></li>
+    <li><span>Toplam</span> <span>$59.90</span></li>
+</ul>
+}

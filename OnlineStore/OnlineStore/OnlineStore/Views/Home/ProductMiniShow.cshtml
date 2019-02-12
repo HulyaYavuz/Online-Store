@@ -1,0 +1,54 @@
+﻿@using OnlineStore.Models
+@model List<Product>
+
+@foreach (var item in Model)
+{
+    <!-- Single gallery Item -->
+    <div class="single_gallery_item">
+        <!-- Product Image -->
+        <div class="product-img" style="width:150px; height:150px">
+            <img src="~/img/product-img/@item.ImageName" alt="" >
+            <div class="product-quicview">
+                <a href="/Home/GetProductDetail/@item.Id"><i class="ti-plus"></i></a>
+            </div>
+        </div>
+        <!-- Product Description -->
+        <div class="product-description">
+            <h4 class="product-price">@item.Price.SalingPrice ₺ </h4>
+            <p>@item.Name</p>
+            <!-- Add to Cart -->
+            <a href="#" data-id="@item.Id" class="add-to-cart-btn addtobasket">Sepete Ekle</a>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function myfunction() {
+        $(".addtobasket").click(function myfunction() {
+            var uid = $(this).attr("data-id");
+            $.ajax({
+                type: "GET",
+                url: "/Cart/AddBasket",
+                data: { id: uid },
+                success: function myfunction() {
+                    $.ajax({
+                        type: "GET",
+                        url: "/Cart/MiniBasket",
+                        async: false,
+                        success: function VeriGetir(veri) {
+                            console.log("test");
+                            $(".cart-all").html('');
+                            $(".cart-all").html(veri);
+                            window.location.reload();
+
+                        }
+
+                    })
+                },
+                error: function myfunction() {
+                    alert("Hata : Ürün Sepete Eklenemedi.");
+                }
+            });
+        });
+    });
+</script>
