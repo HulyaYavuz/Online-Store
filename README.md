@@ -7,5 +7,5 @@ Projede kullanıcı için işlemler olduğu gibi kurumsal kullanıcıları da d�
 
 ANASAYFA
 Sitemize giriş yaptığımız zaman son indirimler ve yeni gelenler ürünler karşılamaktadır.Ürünler kendi içerisinde kategorilenebilmektedir.
-![Online](https://raw.githubusercontent.com/HulyaYavuz/Online-Store/OnlineStore/resimler/p1.jpg)
+![Online](https://github.com/HulyaYavuz/Online-Store/blob/master/OnlineStore/resimler/p1.jpg?raw=true)
 https://raw.githubusercontent.com/HulyaYavuz/YemekSiparis/master/
