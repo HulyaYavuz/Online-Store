@@ -1,5 +1,6 @@
 # Online-Store
 
+<<<<<<< HEAD
 
 E-Ticaret sistemi üzerine kurulmuþ örnek alýþveriþ sitesi;
 
@@ -8,10 +9,20 @@ Projede kullanýcý için iþlemler olduðu gibi kurumsal kullanýcýlarý da düþünerek 
 
 ANASAYFA
 Sitemize giriþ yaptýðýmýz zaman son indirimler ve yeni gelenler ürünler karþýlamaktadýr.Ürünler kendi içerisinde kategorilenebilmektedir.
+=======
+E-Ticaret sistemi Ã¼zerine kurulmuÅŸ Ã¶rnek alÄ±ÅŸveriÅŸ sitesi;
+
+GÃ¼nÃ¼mÃ¼z hayat yoÄŸunluÄŸunun artmasÄ± ile birlikte insanlarÄ±n  evinden ,cebinden intrenet Ã¼zerinden alÄ±ÅŸveriÅŸ yapma ihtiyacÄ± artmÄ±ÅŸtÄ±r.Bende ilgilendiÄŸim dil Ã¼zerine Ã¶ÄŸrendiklerimi geliÅŸtirmek iÃ§in e-ticaret sitesiyi yapmayÄ± dÃ¼ÅŸÃ¼ndÃ¼m.
+Projede kullanÄ±cÄ± iÃ§in iÅŸlemler olduÄŸu gibi kurumsal kullanÄ±cÄ±larÄ± da dÃ¼ÅŸÃ¼nerek yÃ¶netim panelinde ihtiyaÃ§ duyulan iÅŸlemler de dÃ¼ÅŸÃ¼nÃ¼ldÃ¼.
+
+ANASAYFA
+Sitemize giriÅŸ yaptÄ±ÄŸÄ±mÄ±z zaman son indirimler ve yeni gelenler Ã¼rÃ¼nler karÅŸÄ±lamaktadÄ±r.ÃœrÃ¼nler kendi iÃ§erisinde kategorilenebilmektedir.
+>>>>>>> 250f3012eb04d943e3d3e5681e9c835fab6e355b
 
  
 
 
+<<<<<<< HEAD
 Ürün Detay Sayfasý 
 
 Sayfada gezerken beðendiðiniz ürün üzerine týklayarak modalpopup da hýzlý bir görünüm oluþturulur.Daha sonra tüm özellikleri gör seçeneði ile ürün detayýna yönlendirme saðlanýr.
@@ -38,6 +49,34 @@ Panelde yöneticinin kolaylýkla sayfaya düzenlemeler yapabileceði iþlemler düþünü
  
 
 Düzenleme yapabileceði ürüne rahatça ulaþýlabilmesi için filtreleme yapýldý.
+=======
+ÃœrÃ¼n Detay SayfasÄ± 
+
+Sayfada gezerken beÄŸendiÄŸiniz Ã¼rÃ¼n Ã¼zerine tÄ±klayarak modalpopup da hÄ±zlÄ± bir gÃ¶rÃ¼nÃ¼m oluÅŸturulur.Daha sonra tÃ¼m Ã¶zellikleri gÃ¶r seÃ§eneÄŸi ile Ã¼rÃ¼n detayÄ±na yÃ¶nlendirme saÄŸlanÄ±r.
+ 
+
+Kategorilendirme
+Sayfa iÃ§erisinde istediÄŸiniz Ã¼rÃ¼ne daha kolay ulaÅŸmak iÃ§in kategori ile filtreleme yapabilirsiniz.
+ 
+ 
+
+Sepet Ä°ÅŸlemleri
+Sepete eklediÄŸiniz Ã¼rÃ¼nlerinizin fiyatlarÄ±nÄ± sayfada dolaÅŸÄ±rken sepet widget'Ä±nda gÃ¶rebilirsiniz.
+ 
+
+Sepetinizi gÃ¶rÃ¼ntÃ¼leyerek istediÄŸiniz Ã¼rÃ¼ne ekleme yada Ã§Ä±karma yapabilirsiniz.KaldÄ±ÄŸÄ±nÄ±z yerden alÄ±ÅŸveriÅŸe devam edebilirsiniz.
+ 
+
+Sepeti kontrol edip fatura bilgilerinizi girerken sepet Ã¶zetinizde sunularak kolaylÄ±k saÄŸlanmÄ±ÅŸtÄ±r.
+ 
+
+YÃ–NETÄ°M PANELÄ° Ä°ÅžLEMLERÄ° 
+Panelde yÃ¶neticinin kolaylÄ±kla sayfaya dÃ¼zenlemeler yapabileceÄŸi iÅŸlemler dÃ¼ÅŸÃ¼nÃ¼ldÃ¼.
+ 
+ 
+
+DÃ¼zenleme yapabileceÄŸi Ã¼rÃ¼ne rahatÃ§a ulaÅŸÄ±labilmesi iÃ§in filtreleme yapÄ±ldÄ±.
+>>>>>>> 250f3012eb04d943e3d3e5681e9c835fab6e355b
  
 
 
@@ -49,4 +88,7 @@ Düzenleme yapabileceði ürüne rahatça ulaþýlabilmesi için filtreleme yapýldý.
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 250f3012eb04d943e3d3e5681e9c835fab6e355b
